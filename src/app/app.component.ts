@@ -1,6 +1,7 @@
 import { Component, VERSION } from '@angular/core';
 import { AppService } from './app.service';
-
+import { ProfileComponent } from './profile/profile.component';
+import { SearchHistoryComponent } from './search-history/search-history.component';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -13,7 +14,7 @@ export class AppComponent  {
   name = 'Angular ' + VERSION.major;
   public searchedUser:string;
  public users : any;
- public searchedList:any [];
+
   public error: string;
   
   constructor(private appservice:AppService/*private appservice:AppService*/){
@@ -28,9 +29,10 @@ export class AppComponent  {
     //to fetch the user
     this.appservice.getUser(this.searchedUser).subscribe( (data)=>{
           this.users=data;
-          this.searchedList.push(data.html_url);
-          console.log(data.html_url);
+          localStorage.setItem(this.searchedUser, data.html_url);
+          //console.log(data.html_url);
     } ,(error)=>{
+      this.users=null;
       this.error=error;
       console.log(error);
     })
