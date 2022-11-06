@@ -1,29 +1,37 @@
 <!-- <hello name="{{ name }}"></hello> -->
 <div class="row">
-<div class="column" style="background-color:#aaa;">
-  <h2 style="background-color:#bbb;">Search Github Users </h2>
-  <form role="search" id="form">
-  <div class="form-group" autocomplete="off">
-  <label class="control-label " for="name"> Name </label>
-    <input
-       name="name"
-      type="text"
-      id="mySearch"
-     placeholder="Search user"
-      required />
+  <div class="column" style="background-color:#aaa;">
+    <h2 style="background-color:#bbb;">Search Github Users</h2>
+    <form role="search" id="form" (submit)="searchUser()">
+      <div class="form-group" autocomplete="off">
+        <label class="control-label" for="name"> Name </label>
+        <input
+          name="user"
+          [(ngModel)]="searchedUser"
+          type="text"
+          id="mySearch"
+          placeholder="Search user"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-danger btn-block" type="submit" value="serach">Search</button>
+        <!-- <button >Search</button> -->
+      </div>
+    </form>
+     <div>
+      <pre>
+      {{users | json}}
+      </pre>
+    </div>
+    <p>Some text..</p>
   </div>
-  <div  class="form-group">
-    <button class="btn btn-danger btn-block">Search</button>
-  <!-- <button >Search</button> -->
-</div>
-</form>
 
-  <p>Some text..</p>
-</div>
-<div class="column" style="background-color:#bbb;">
-  <h2>Search History</h2>
-  <!-- <p ng-repeat="users in user">Visit <a href="users.url">{{user.name}}</a></p> -->
-  <a href="" id="link"></a>
-  <!-- <button id="link">qdcqdcqd</button> -->
-</div>
+
+  <div class="column" style="background-color:#bbb;">
+    <h2>Search History</h2>
+    <!-- <p ng-repeat="users in user">Visit <a href="users.url">{{user.name}}</a></p> -->
+    <a href="" id="link"></a>
+    <!-- <button id="link">qdcqdcqd</button> -->
+  </div>
 </div>
