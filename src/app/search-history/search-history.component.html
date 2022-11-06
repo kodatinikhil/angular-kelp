@@ -1,0 +1,23 @@
+<div>
+  <h1>History Table</h1>
+  <table *ngIf="hist">
+    <thead >
+      <tr>
+        <th>UserName</th>
+        <th>UserLink</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of hist">
+        <th>{{ item.name }}</th>
+        <td>
+          <a href="{{ item.link }}" target="_blank"> Link</a>
+        </td>
+        <td>
+          <button type="button">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

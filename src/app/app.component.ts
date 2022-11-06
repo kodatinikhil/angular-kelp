@@ -2,6 +2,11 @@ import { Component, VERSION } from '@angular/core';
 import { AppService } from './app.service';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchHistoryComponent } from './search-history/search-history.component';
+
+interface historyObj {
+  name: string;
+  link: string;
+}
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -11,21 +16,23 @@ import { SearchHistoryComponent } from './search-history/search-history.componen
 
 
 export class AppComponent  {
-  name = 'Angular ' + VERSION.major;
+  
   public searchedUser:string;
  public users : any;
-
+ public history: any;
+ public hist: Array<historyObj> = [];
+ public historyObjs: any[];
+ public historyLinks:any [];
   public error: any;
   
   constructor(private appservice:AppService/*private appservice:AppService*/){
     // this.appservice.getUser("kodatinikhil").subscribe((data)=>{
     //   console.warn(data);
     // })
-    
   }
 
   public searchUser(){
-
+    this.getLocalStorage();
     //to fetch the user
     this.appservice.getUser(this.searchedUser).subscribe( (data)=>{
           this.users=data;
@@ -34,14 +41,48 @@ export class AppComponent  {
     } ,(error)=>{
       this.users=null;
       this.error=error;
+      localStorage.setItem(this.searchedUser, error);
       console.log(error);
     })
   }
+
+
+  public getLocalStorage(){
+   
+        var archive = {};
+        var totalItems=[];
+        var items={};
+        var itemName=[];
+        var itemLink=[];
+       // Notice change here
+        var keys = Object.keys(localStorage);
+        //console.log(keys);
+        var i = keys.length;
+          while ( i-- ) {
+            
+            archive[ keys[i] ] = localStorage.getItem( keys[i]);
+            items['name']=keys[i];
+             items['link']= archive[keys[i]];
+             totalItems.push({...items});
+             console.log("Nikhil",totalItems);
+            itemName.push(keys[i]);
+            itemLink.push( archive[ keys[i] ]);
+            // console.log("Nikhil",archive);
+          }
+           //console.log("Nikhil",totalItems);
+          //  console.log("Nikhil",itemLink);
+          this.history=archive;
+          this.historyObjs=itemName;
+          this.historyLinks=itemLink;
+          this.hist=totalItems;
+  }
+
+  
   
   ngOnInit(){
   
     // let that=this;
- console.log(this.users);
+ //console.log(this.users);
     // allStorage();
     // //console.log(user["adcds fdsvfdvd"]);
     //   function allStorage() {

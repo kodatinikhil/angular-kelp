@@ -11,22 +11,7 @@ export class ProfileComponent implements OnInit {
  
   public history:any [];
   constructor() {
-    allStorage();
-    //console.log(user["adcds fdsvfdvd"]);
-      function allStorage() {
-
-        var archive = {}; // Notice change here
-        var keys = Object.keys(localStorage);
-        //console.log(keys);
-        var i = keys.length;
-
-          while ( i-- ) {
-            archive[ keys[i] ] = localStorage.getItem( keys[i] );
-          
-          }
-
-      }
-
+  
    }
 
   ngOnInit() {
