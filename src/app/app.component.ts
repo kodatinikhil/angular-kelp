@@ -15,7 +15,7 @@ export class AppComponent  {
   public searchedUser:string;
  public users : any;
 
-  public error: string;
+  public error: any;
   
   constructor(private appservice:AppService/*private appservice:AppService*/){
     // this.appservice.getUser("kodatinikhil").subscribe((data)=>{

@@ -1,5 +1,5 @@
-<div class="container-fuild" *ngIf="users">
-    <div class="row">
+<div class="container-fuild" >
+    <div class="row" *ngIf="users">
       <div class="col-md-3">
 
         <img [src]="users.avatar_url" alt="" height=80px width="80px">
@@ -11,7 +11,12 @@
       <div class="col-md-3">
       <a [href]="users.html_url">{{users?.name}}</a>
        </div>
-      <div class="col-md-9">
+     
+    </div>
+     <div class="col-md-3" *ngIf="error">
+      <div class="col-md-3">
+       {{error}}
       </div>
-  </div>
+
+    </div>
 </div>

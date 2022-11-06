@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   @Input() users:any;
+  @Input() error:any;
  
   public history:any [];
   constructor() {
