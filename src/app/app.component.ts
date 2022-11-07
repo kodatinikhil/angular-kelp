@@ -58,12 +58,12 @@ export class AppComponent {
       items['name'] = keys[i];
       items['link'] = archive[keys[i]];
       totalItems.push({ ...items });
-      console.log('Nikhil', totalItems);
+     // console.log('Nikhil', items);
       itemName.push(keys[i]);
       itemLink.push(archive[keys[i]]);
       // console.log("Nikhil",archive);
     }
-    //console.log("Nikhil",totalItems);
+    console.log("Nikhil",totalItems);
     //  console.log("Nikhil",itemLink);
     this.history = archive;
     this.historyObjs = itemName;

@@ -2,11 +2,11 @@
     <div class="row" *ngIf="users">
       <div class="col-md-3">
 
-        <img [src]="users.avatar_url" alt="" height=80px width="80px">
+        <img [src]="users.avatar_url" alt="" height=150px width="150px">
         
       </div>
       <div class="col-md-3">
-        <a [href]="users.html_url" target="_blank"><button style=color:white;background-color:green>{{users?.login}}</button></a>
+        <a [href]="users.html_url" target="_blank"><button style=color:white;background-color:green>Click Here Go to The Git Profile <pre>{{users?.login}}</pre></button></a>
       </div>
       <div class="col-md-3">
       <a [href]="users.html_url">{{users?.name}}</a>
@@ -14,7 +14,7 @@
      
     </div>
      <div class="col-md-3" *ngIf="error">
-      <div class="col-md-3">
+      <div class="col-md-3" width=50px>
        {{error}}
       </div>
 
