@@ -1,4 +1,4 @@
-import { Component, VERSION ,Input,EventEmitter} from '@angular/core';
+import { Component, VERSION, Input, EventEmitter } from '@angular/core';
 import { AppService } from './app.service';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchHistoryComponent } from './search-history/search-history.component';
@@ -26,12 +26,15 @@ export class AppComponent {
   ) {}
 
   public searchUser() {
-   //var gitName=this.searchedUser.split(" ").join('');
+    //var gitName=this.searchedUser.split(" ").join('');
     //to fetch the user
     this.appservice.getUser(this.searchedUser).subscribe(
       (data) => {
         this.users = data;
-        localStorage.setItem(this.searchedUser+" "+"{{success Find}}" , data.html_url);
+        localStorage.setItem(
+          this.searchedUser + ' ' + '{{success Find}}',
+          data.html_url
+        );
         //localStorage.setItem(this.searchedUser+" "+"success", error);
         this.getLocalStorage();
         //console.log(data.html_url);
@@ -39,9 +42,12 @@ export class AppComponent {
       (error) => {
         this.users = null;
         this.error = error;
-        localStorage.setItem(this.searchedUser+" "+"{{Failed Find}}" , error);
+        localStorage.setItem(
+          this.searchedUser + ' ' + '{{Failed Find}}',
+          error
+        );
         this.getLocalStorage();
-        console.log("Nikhil",error);
+        console.log('Nikhil', error);
       }
     );
   }
@@ -61,37 +67,28 @@ export class AppComponent {
       items['name'] = keys[i];
       items['link'] = archive[keys[i]];
       totalItems.push({ ...items });
-     // console.log('Nikhil', items);
+      // console.log('Nikhil', items);
       itemName.push(keys[i]);
       itemLink.push(archive[keys[i]]);
       // console.log("Nikhil",archive);
     }
-    console.log("Nikhil",totalItems);
+    //console.log('Nikhil', totalItems);
     //  console.log("Nikhil",itemLink);
     this.history = archive;
     this.historyObjs = itemName;
     this.historyLinks = itemLink;
     this.hist = totalItems;
   }
-  
 
-   deleteLocalStorage(data){
-     var reqName = data.substring(0, data.indexOf('{'));
-     
-      console.log("Nikhil",reqName);
-     // localStorage.removeItem(reqName);
-     var y=localStorage.getItem(reqName);
-     console.log(y);
-     
-      //this.getLocalStorage();
-      //this.searchUser();
-    
-    
-      //console.log("Nikhil",reqName.length);
+  deleteLocalStorage(data) {
+    localStorage.removeItem(data);
+
+    this.getLocalStorage();
   }
 
   ngOnInit() {
     this.getLocalStorage();
-   // this.deleteLocalStorage("data");
+    // console.log(localStorage)
+    // this.deleteLocalStorage("data");
   }
 }
