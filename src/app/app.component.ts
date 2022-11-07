@@ -71,5 +71,7 @@ export class AppComponent {
     this.hist = totalItems;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getLocalStorage();
+  }
 }
