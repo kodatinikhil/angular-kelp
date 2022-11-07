@@ -31,16 +31,17 @@ export class AppComponent {
     this.appservice.getUser(this.searchedUser).subscribe(
       (data) => {
         this.users = data;
-        localStorage.setItem(this.searchedUser, data.html_url);
+        localStorage.setItem(this.searchedUser+" "+"{{success Find}}" , data.html_url);
+        //localStorage.setItem(this.searchedUser+" "+"success", error);
         this.getLocalStorage();
         //console.log(data.html_url);
       },
       (error) => {
         this.users = null;
         this.error = error;
-        localStorage.setItem(this.searchedUser, error);
+        localStorage.setItem(this.searchedUser+" "+"{{Failed Find}}" , error);
         this.getLocalStorage();
-        console.log(error);
+        console.log("Nikhil",error);
       }
     );
   }
