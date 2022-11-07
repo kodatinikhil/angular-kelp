@@ -66,16 +66,28 @@ export class AppComponent {
       itemLink.push(archive[keys[i]]);
       // console.log("Nikhil",archive);
     }
-    //console.log("Nikhil",totalItems);
+    console.log("Nikhil",totalItems);
     //  console.log("Nikhil",itemLink);
     this.history = archive;
     this.historyObjs = itemName;
     this.historyLinks = itemLink;
     this.hist = totalItems;
   }
+  
 
    deleteLocalStorage(data){
-      console.log(data);
+     var reqName = data.substring(0, data.indexOf('{'));
+     
+      console.log("Nikhil",reqName);
+     // localStorage.removeItem(reqName);
+     var y=localStorage.getItem(reqName);
+     console.log(y);
+     
+      //this.getLocalStorage();
+      //this.searchUser();
+    
+    
+      //console.log("Nikhil",reqName.length);
   }
 
   ngOnInit() {

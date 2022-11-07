@@ -14,14 +14,14 @@ export class SearchHistoryComponent implements OnInit {
     
    }
  
-  // sendData(){
-  //   this.deleteLocalStorage.emit("kodatinikhil");
-  // // localStorage.removeItem("kodatinikhil");
-  //  //console.log(k);
-  // }
+  sendData(data){
+  this.deleteLocalStorage.emit(data);
+  // localStorage.removeItem("kodatinikhil");
+   //console.log(k);
+  }
 
   ngOnInit() {
-    this.deleteLocalStorage.emit("kodatinikhil");
+   // this.deleteLocalStorage.emit("kodatinikhil");
   }
 
 }
