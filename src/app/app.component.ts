@@ -1,4 +1,4 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, VERSION ,Input,EventEmitter} from '@angular/core';
 import { AppService } from './app.service';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchHistoryComponent } from './search-history/search-history.component';
@@ -26,7 +26,7 @@ export class AppComponent {
   ) {}
 
   public searchUser() {
-   
+   //var gitName=this.searchedUser.split(" ").join('');
     //to fetch the user
     this.appservice.getUser(this.searchedUser).subscribe(
       (data) => {
@@ -74,7 +74,12 @@ export class AppComponent {
     this.hist = totalItems;
   }
 
+   deleteLocalStorage(data){
+      console.log(data);
+  }
+
   ngOnInit() {
     this.getLocalStorage();
+   // this.deleteLocalStorage("data");
   }
 }

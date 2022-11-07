@@ -31,6 +31,7 @@
       <app-search-history
         [historyObjs]="historyObjs"
         [historyLinks]="historyLinks"
+        (deleteLocalStorage)="deleteLocalStorage($event)"
         [hist]="hist"
       ></app-search-history>
     </div>
