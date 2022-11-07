@@ -26,18 +26,20 @@ export class AppComponent {
   ) {}
 
   public searchUser() {
-    this.getLocalStorage();
+   
     //to fetch the user
     this.appservice.getUser(this.searchedUser).subscribe(
       (data) => {
         this.users = data;
         localStorage.setItem(this.searchedUser, data.html_url);
+        this.getLocalStorage();
         //console.log(data.html_url);
       },
       (error) => {
         this.users = null;
         this.error = error;
         localStorage.setItem(this.searchedUser, error);
+        this.getLocalStorage();
         console.log(error);
       }
     );
@@ -63,7 +65,7 @@ export class AppComponent {
       itemLink.push(archive[keys[i]]);
       // console.log("Nikhil",archive);
     }
-    console.log("Nikhil",totalItems);
+    //console.log("Nikhil",totalItems);
     //  console.log("Nikhil",itemLink);
     this.history = archive;
     this.historyObjs = itemName;
