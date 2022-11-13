@@ -34,7 +34,10 @@ export class AppComponent {
         localStorage.setItem(
           this.searchedUser + ' ' + '{{success Find}}',
           data.html_url
+
+          
         );
+        this.error=null;
         //localStorage.setItem(this.searchedUser+" "+"success", error);
         this.getLocalStorage();
         //console.log(data.html_url);
